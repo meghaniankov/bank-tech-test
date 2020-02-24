@@ -2,11 +2,17 @@ require 'transaction'
 
 describe Transaction do
 
-  subject(:transaction) { described_class.new('credit') }
+  subject(:transaction) { described_class.new('credit', 100) }
 
-  describe '#view_type' do
-    it 'returns type instance variable' do
-      expect(subject.view_type).to eq 'credit'
+  describe '#type' do
+    it 'displays type instance variable' do
+      expect(subject.type).to eq 'credit'
+    end
+  end
+
+  describe '#view_amount' do
+    it 'displays amount instance variable' do
+      expect(subject.amount).to eq 100
     end
   end
 end
