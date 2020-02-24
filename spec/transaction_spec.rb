@@ -10,9 +10,17 @@ describe Transaction do
     end
   end
 
-  describe '#view_amount' do
+  describe '#amount' do
     it 'displays amount instance variable' do
       expect(subject.amount).to eq 100
     end
+  end
+
+  describe '#deposit' do
+    it 'sets type to credit' do
+      subject.deposit(5)
+      expect(subject.type).to eq 'credit'
+    end
+
   end
 end

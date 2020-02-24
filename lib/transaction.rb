@@ -13,4 +13,8 @@ class Transaction
     @amount
   end
 
+  def deposit(amount)
+    @type = 'credit'
+  end
+
 end

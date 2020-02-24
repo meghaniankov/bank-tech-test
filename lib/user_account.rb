@@ -10,17 +10,18 @@ class UserAccount
   def make_deposit(amount)
     @balance += amount
     @transactions << 'transaction'
-    "Deposit of $#{5} was successful"
+    "Deposit of $#{amount} was successful"
   end
 
   def make_withdrawl(amount)
     @balance -= amount
     @transactions << 'transaction'
-    "Withdrawl of $#{5} was successful"
+    "Withdrawl of $#{amount} was successful"
   end
 
   def view_transactions
     @transactions
   end
+
 
 end
