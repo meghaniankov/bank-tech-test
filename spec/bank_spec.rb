@@ -28,7 +28,17 @@ describe Bank do
     it 'raises error if withdrawl amount exceeds balance' do
       expect { subject.make_withdrawl(5) }.to raise_error 'Withdrawl unsuccessful. Withdrawl amount exceeds account balance'
     end
+  end
 
+  describe '#print_statement' do
+    it 'displays users transaction details including date, transaction type, amount, and balance' do
+      skip
+      subject.make_deposit(10)
+      subject.make_withdrawl(5)
+      expect(subject.print_statement).to eq "date || credit || debit || balance
+      14/01/2012 || || 5.00 || 5.00
+      10/01/2012 || 10.00 || || 10.00"
+    end
   end
   
 end

@@ -17,6 +17,9 @@ class Bank
     @account.make_withdrawl(amount)
   end
 
+  def print_statement
+  end
+
   private
 
   def exceeds_balance(amount)
