@@ -8,7 +8,7 @@ describe UserAccount do
     end
 
     it 'returns "Successful Deposit" message' do
-      expect(subject.make_deposit(5)).to eq 'Deposit successful'
+      expect(subject.make_deposit(5)).to eq 'Deposit of $5 was successful'
     end
   end
 
