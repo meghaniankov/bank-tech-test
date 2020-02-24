@@ -18,6 +18,11 @@ describe UserAccount do
       subject.make_withdrawl(5)
       expect(subject.balance).to eq 5
     end
+
+    it 'returns "Successful Withdrawl" message' do
+      subject.make_deposit(10)
+      expect(subject.make_withdrawl(5)).to eq 'Withdrawl of $5 was successful'
+    end
   end
 
 end

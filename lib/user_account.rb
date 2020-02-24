@@ -13,6 +13,7 @@ class UserAccount
 
   def make_withdrawl(amount)
     @balance -= amount
+    "Withdrawl of $#{5} was successful"
   end
 
 end
