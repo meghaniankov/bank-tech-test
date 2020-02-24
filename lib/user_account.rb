@@ -2,7 +2,7 @@ require_relative 'transaction'
 
 class UserAccount
 
-  attr_reader :balance
+  attr_reader :balance, :transactions
 
   def initialize
     @balance = 0
@@ -30,7 +30,7 @@ class UserAccount
   private
 
   def new_transaction
-    Transaction.new
+    Transaction.new(@balance)
   end
 
   def increase_balance(amount)
