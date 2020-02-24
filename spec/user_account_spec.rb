@@ -29,6 +29,11 @@ describe UserAccount do
     it 'returns an empty array if no transactions have happened' do
       expect(subject.view_transactions).to eq []
     end
+
+    it 'returns one transaction after a deposit has been made' do
+      subject.make_deposit(10)
+      expect(subject.view_transactions).to include 'transaction1'
+    end
   end
 
 end

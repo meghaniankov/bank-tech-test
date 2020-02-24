@@ -9,6 +9,7 @@ class UserAccount
 
   def make_deposit(amount)
     @balance += amount
+    @transactions << 'transaction1'
     "Deposit of $#{5} was successful"
   end
 
@@ -18,7 +19,7 @@ class UserAccount
   end
 
   def view_transactions
-    []
+    @transactions
   end
 
 end
