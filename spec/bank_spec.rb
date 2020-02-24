@@ -10,6 +10,7 @@ describe Bank do
     it 'returns "Successful Deposit" message' do
       expect(subject.make_deposit(5)).to eq 'Deposit of $5 was successful'
     end
+
   end
 
   describe '#make_withdrawl' do
@@ -18,6 +19,16 @@ describe Bank do
       subject.make_withdrawl(5)
       expect(subject.account.balance).to eq 5
     end
+
+    it 'returns "Successful Withdrawl" message' do
+      subject.make_deposit(10)
+      expect(subject.make_withdrawl(5)).to eq 'Withdrawl of $5 was successful'
+    end
+
+    it 'raises error if withdrawl amount exceeds balance' do
+      expect { subject.make_withdrawl(5) }.to raise_error 'Withdrawl uncessful. Withdrawl amount exceeds account balance'
+    end
+
   end
   
 end
