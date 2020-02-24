@@ -27,19 +27,26 @@ describe UserAccount do
 
   describe '#view_transactions' do
 
+    let(:transaction) { double :transaction }
+
+    before do
+      allow(transaction).to receive(:deposit)
+      allow(transaction).to receive(:withdrawl)
+    end
+
     it 'returns an empty array if no transactions have happened' do
       expect(subject.view_transactions).to eq []
     end
 
     it 'returns one transaction after a deposit has been made' do
-      subject.make_deposit(10)
-      expect(subject.view_transactions).to include 'transaction'
+      subject.make_deposit(10, transaction)
+      expect(subject.view_transactions).to include transaction
     end
 
     it 'returns two transactions after a deposit and withdrawl has been made' do
-      subject.make_deposit(10)
-      subject.make_withdrawl(5)
-      expect(subject.view_transactions).to eq ['transaction', 'transaction']
+      subject.make_deposit(10, transaction)
+      subject.make_withdrawl(5, transaction)
+      expect(subject.view_transactions).to eq [transaction, transaction]
     end
   end
 

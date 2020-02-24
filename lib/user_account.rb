@@ -7,20 +7,28 @@ class UserAccount
     @transactions = []
   end
 
-  def make_deposit(amount)
+  def make_deposit(amount, transaction = new_transaction)
     @balance += amount
-    @transactions << 'transaction'
+    transaction.deposit(amount)
+    @transactions << transaction
     "Deposit of $#{amount} was successful"
   end
 
-  def make_withdrawl(amount)
+  def make_withdrawl(amount, transaction = new_transaction)
     @balance -= amount
-    @transactions << 'transaction'
+    transaction.withdrawl(amount)
+    @transactions << transaction
     "Withdrawl of $#{amount} was successful"
   end
 
   def view_transactions
     @transactions
+  end
+
+  private
+
+  def new_transaction
+    Transaction.new
   end
 
 
