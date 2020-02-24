@@ -11,7 +11,14 @@ class Bank
   end
 
   def make_withdrawl(amount)
-    fail 'Withdrawl uncessful. Withdrawl amount exceeds account balance' if amount > @account.balance
+    fail 'Withdrawl uncessful. Withdrawl amount exceeds account balance' if exceeds_balance(amount)
     @account.make_withdrawl(amount)
   end
+
+  private
+
+  def exceeds_balance(amount)
+    amount > @account.balance
+  end
+
 end
