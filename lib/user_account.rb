@@ -1,3 +1,5 @@
+require_relative 'transaction'
+
 class UserAccount
 
   attr_reader :balance
