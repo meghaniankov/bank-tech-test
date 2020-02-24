@@ -21,3 +21,41 @@ date || credit || debit || balance
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
 ```
+
+### User Stories
+
+```
+As a bank customer,
+So I can keep my money at the bank,
+I would like to make deposits.
+```
+
+```
+As a bank customer,
+So I can spend my money,
+I would like to make withdrawls.
+```
+
+```
+As a bank customer,
+So I can see how much money I have at the bank,
+I would like to print my bank statement.
+```
+
+```
+As a bank customer,
+So I can see all of my transaction details,
+I would like my bank statement to include the date of each transaction.
+```
+
+```
+As a bank customer,
+So I can see all of my transaction details,
+I would like my bank statement to include the credit/debit amount of each transaction.
+```
+
+```
+As a bank customer,
+So I can see all of my transaction details,
+I would like my bank statement to include the balance after each transaction.
+```
