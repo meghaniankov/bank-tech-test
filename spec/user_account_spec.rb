@@ -32,7 +32,13 @@ describe UserAccount do
 
     it 'returns one transaction after a deposit has been made' do
       subject.make_deposit(10)
-      expect(subject.view_transactions).to include 'transaction1'
+      expect(subject.view_transactions).to include 'transaction'
+    end
+
+    it 'returns two transactions after a deposit and withdrawl has been made' do
+      subject.make_deposit(10)
+      subject.make_withdrawl(5)
+      expect(subject.view_transactions).to eq ['transaction', 'transaction']
     end
   end
 
