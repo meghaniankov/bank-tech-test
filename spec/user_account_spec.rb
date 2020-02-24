@@ -25,4 +25,10 @@ describe UserAccount do
     end
   end
 
+  describe '#view_transactions' do
+    it 'returns an empty array if no transactions have happened' do
+      expect(subject.view_transactions).to eq []
+    end
+  end
+
 end
