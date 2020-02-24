@@ -8,6 +8,7 @@ class UserAccount
 
   def make_deposit(amount)
     @balance += amount
+    'Deposit successful'
   end
 
   def make_withdrawl(amount)
