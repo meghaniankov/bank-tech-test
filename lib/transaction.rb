@@ -2,11 +2,11 @@ class Transaction
 
   attr_reader :type, :amount, :date, :balance
 
-  def initialize(date = Time.now.strftime("%d/%m/%Y"))
+  def initialize(current_balance = 0, date = Time.now.strftime("%d/%m/%Y"))
     @type
     @amount
     @date = date
-    @balance = 0
+    @balance = current_balance
   end
 
   def deposit(amount)
@@ -18,6 +18,7 @@ class Transaction
   def withdrawl(amount)
     @type = 'debit'
     @amount = amount
+    @balance -= amount
   end
 
 end
