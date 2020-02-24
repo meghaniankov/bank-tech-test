@@ -8,4 +8,12 @@ describe Bank do
     end
   end
 
+  describe '#make_withdrawl' do
+    it 'decreases balance by a given amount' do
+      subject.make_deposit(10)
+      subject.make_withdrawl(5)
+      expect(subject.balance).to eq 5
+    end
+  end
+  
 end

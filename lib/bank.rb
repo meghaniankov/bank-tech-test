@@ -9,4 +9,8 @@ class Bank
   def make_deposit(amount)
     @balance += amount
   end
+
+  def make_withdrawl(amount)
+    @balance -= amount
+  end
 end
