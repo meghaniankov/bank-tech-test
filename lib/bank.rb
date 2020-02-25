@@ -1,11 +1,12 @@
 require_relative 'user_account'
+require_relative 'statement_printer'
 
 class Bank
 
   attr_reader :account
 
-  def initialize
-    @account = UserAccount.new
+  def initialize(account = UserAccount.new)
+    @account = account
   end
 
   def make_deposit(amount)
@@ -17,16 +18,8 @@ class Bank
     @account.make_withdrawl(amount)
   end
 
-  def print_statement
-    @strings = ["date || credit || debit || balance"]
-    @account.transactions.reverse.map do |transaction|
-      if transaction.type == 'credit'
-        @strings << "#{transaction.date} || #{transaction.amount}.00 || || #{transaction.balance}.00"
-      else
-        @strings << "#{transaction.date} || || #{transaction.amount}.00 || #{transaction.balance}.00"
-      end
-    end
-    puts @strings.join("\n").strip
+  def print_statement(printer = StatementPrinter)
+    printer.to_string(@account.transactions)
   end
 
   private
