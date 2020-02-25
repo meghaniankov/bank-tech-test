@@ -15,6 +15,7 @@ class Bank
 
   def make_withdrawl(amount)
     fail 'Withdrawl unsuccessful. Withdrawl amount exceeds account balance' if exceeds_balance(amount)
+    
     @account.new_transaction(:withdrawl, amount)
   end
 

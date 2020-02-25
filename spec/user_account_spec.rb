@@ -2,8 +2,6 @@ require 'user_account'
 
 describe UserAccount do
 
-
-
   context 'when user makes a deposit' do
     let(:transaction) { double :transaction, type: :deposit, amount: 5, balance: 0 }
 

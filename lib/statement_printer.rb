@@ -5,7 +5,7 @@ module StatementPrinter
   def self.to_string(transactions)
     @strings = [HEADER]
     transactions.reverse.map do |transaction|
-        @strings << "#{transaction.date} ||#{format_type(transaction)}|| #{format_amount(transaction.balance)}"
+      @strings << "#{transaction.date} ||#{format_type(transaction)}|| #{format_amount(transaction.balance)}"
     end
     puts @strings.join("\n").strip
   end

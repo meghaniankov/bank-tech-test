@@ -17,11 +17,11 @@ describe StatementPrinter do
 
     let(:transactions) { [transaction1, transaction2] }
 
-  it 'displays users transaction details including date, transaction type, amount, and balance' do
-    statement = "date || credit || debit || balance\n#{@date} || || 5.00 || 5.00\n#{@date} || 10.00 || || 10.00\n"
-    expect { subject.to_string(transactions) }.to output(statement).to_stdout
-  end
+    it 'displays users transaction details including date, transaction type, amount, and balance' do
+      statement = "date || credit || debit || balance\n#{@date} || || 5.00 || 5.00\n#{@date} || 10.00 || || 10.00\n"
+      expect { subject.to_string(transactions) }.to output(statement).to_stdout
+    end
 
-end
+  end
 
 end
