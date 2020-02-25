@@ -21,6 +21,7 @@ describe StatementPrinter do
     statement = "date || credit || debit || balance\n#{@date} || || 5.00 || 5.00\n#{@date} || 10.00 || || 10.00\n"
     expect { subject.to_string(transactions) }.to output(statement).to_stdout
   end
+
 end
 
 end

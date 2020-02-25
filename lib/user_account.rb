@@ -23,8 +23,4 @@ class UserAccount
     type == :deposit ? @balance += amount : @balance -= amount
   end
 
-  def add_transaction_to_log(transaction)
-    @transactions << transaction
-  end
-
 end
