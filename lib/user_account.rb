@@ -14,13 +14,13 @@ class UserAccount
 
     @transactions << transaction_class.new(type, amount, @balance)
 
-    "#{type.capitalize} of $#{amount} was successful"
+    "#{type.to_s.capitalize} of $#{amount} was successful"
   end
 
   private
   
   def update_balance(type, amount)
-    type == 'deposit' ? @balance += amount : @balance -= amount
+    type == :deposit ? @balance += amount : @balance -= amount
   end
 
   def add_transaction_to_log(transaction)

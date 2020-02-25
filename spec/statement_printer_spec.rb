@@ -5,13 +5,13 @@ describe StatementPrinter do
     @date = Time.now.strftime("%d/%m/%Y")
     let(:transaction1) { double :transaction, 
                                 date: @date, 
-                                type: 'credit', 
+                                type: :deposit, 
                                 amount: 10, 
                                 balance: 10 }
 
     let(:transaction2) { double :transaction, 
                                 date: @date, 
-                                type: 'debit', 
+                                type: :withdrawl, 
                                 amount: 5, 
                                 balance: 5 }
 
