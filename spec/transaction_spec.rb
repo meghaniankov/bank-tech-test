@@ -1,48 +1,29 @@
 require 'transaction' 
 
 describe Transaction do
+  subject { Transaction.new(type, amount, balance, @date) }
+  let(:type) { double :type }
+  let(:amount) { double :amount }
+  let(:balance) { double :balance }
+  @date = Time.now.strftime("%d/%m/%Y")
 
-  it 'is initialized with current date' do
-    @date = Time.now.strftime("%d/%m/%Y")
-    expect(subject.date).to eq @date
-  end
+  describe '#initialize' do
 
-  describe '#deposit' do
-
-    it 'sets type to credit' do
-      subject.deposit(5)
-      expect(subject.type).to eq 'credit'
+    it 'stores the type' do
+      expect(subject.type).to eq type
     end
 
-    it 'sets amount to amount passed' do
-      subject.deposit(5)
-      expect(subject.amount).to eq 5
+    it 'stores the amount' do
+      expect(subject.amount).to eq amount
     end
 
-    it 'sets balance to balance passed plus deposit amount' do
-      @current_balance = 10
-      subject = Transaction.new(@current_balance)  
-      subject.deposit(5)
-      expect(subject.balance).to eq 15
-    end
-  end
-
-  describe '#withdrawl' do
-    it 'sets type to debit' do
-      subject.withdrawl(5)
-      expect(subject.type).to eq 'debit'
+    it 'stores the balance' do
+      expect(subject.balance).to eq balance
     end
 
-    it 'sets amount to amount passed' do
-      subject.withdrawl(5)
-      expect(subject.amount).to eq 5
-    end
-
-    it 'sets balance to balance passed minus withdrawl amount' do
-      @current_balance = 10
-      subject = Transaction.new(@current_balance)  
-      subject.withdrawl(5)
-      expect(subject.balance).to eq 5
+    it 'is initialized with current date' do
+      expect(subject.date).to eq @date
     end
   end
+
 end

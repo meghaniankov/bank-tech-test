@@ -10,12 +10,12 @@ class Bank
   end
 
   def make_deposit(amount)
-    @account.make_deposit(amount)
+    @account.new_transaction('deposit', amount)
   end
 
   def make_withdrawl(amount)
     fail 'Withdrawl unsuccessful. Withdrawl amount exceeds account balance' if exceeds_balance(amount)
-    @account.make_withdrawl(amount)
+    @account.new_transaction('withdrawl', amount)
   end
 
   def print_statement(printer = StatementPrinter)
