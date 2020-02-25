@@ -1,9 +1,7 @@
 # Bank Tech Test 
 Practice tech test in Week 10 at Makers Academy.
 
-Build a simple command line program where a bank customer can make deposits, make withdrawls, and print their bank statements.
-
-See tech test requirements [here](https://github.com/meghaniankov/bank-tech-test#requirements).
+Build a simple command line program where a bank customer can make deposits, make withdrawls, and print their bank statements. See tech [test requirements](https://github.com/meghaniankov/bank-tech-test#requirements) and [approach](https://github.com/meghaniankov/bank-tech-test#approach).
 
 ## Getting Started
 
@@ -109,4 +107,14 @@ date || credit || debit || balance
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
 ```
+## Approach
 
+* After reviewing the requirements and acceptance criteria, I broke down both into User Stories.
+* I used the User Stories to diagram/model the classes I wanted to use.
+* I decided on a Bank class, User Account class, Transaction class, and Statement Printer module.
+  - The Bank class is where the user interacts with the program. 
+  - The User Account class holds the account balance, stores a list of Transactions, and initiates a new Transaction when the user makes a deposit or withdrawl.
+  - The Transaction class holds the details of a transaction (type, amount, balance, date)
+  - The Statement Printer module takes the array of Transactions and formats them into a string output
+  - I could extend the program to include a Transaction Log class
+* As always, I used TDD throughout. 
