@@ -1,53 +1,46 @@
 require 'user_account'
 
 describe UserAccount do
-  describe '#make_deposit' do
-    it 'increases balance by given amount' do
-      subject.make_deposit(5)
-      expect(subject.balance).to eq 5
-    end
+
+
+
+  context 'when user makes a deposit' do
+    let(:transaction) { double :transaction, type: :deposit, amount: 5, balance: 0 }
 
     it 'returns "Successful Deposit" message' do
-      expect(subject.make_deposit(5)).to eq 'Deposit of $5 was successful'
+      expect(subject.new_transaction(:deposit, 5)).to eq 'Deposit of $5 was successful'
     end
-  end
 
-  describe '#make_withdrawl' do
-    it 'decreases balance by a given amount' do
-      subject.make_deposit(10)
-      subject.make_withdrawl(5)
+    it 'increases balance by given amount' do
+      expect(subject.new_transaction(:deposit, 5))
       expect(subject.balance).to eq 5
     end
 
-    it 'returns "Successful Withdrawl" message' do
-      subject.make_deposit(10)
-      expect(subject.make_withdrawl(5)).to eq 'Withdrawl of $5 was successful'
+    it 'creates new transaction' do
+      expect(transaction).to receive(:new)
+      subject.new_transaction(:deposit, 5, transaction)
     end
+
   end
 
-  describe '#view_transactions' do
+  context 'when user makes a withdrawl' do
+    let(:transaction) { double :transaction, type: :withdrawl, amount: 5, balance: 10 }
+    before { subject.new_transaction(:deposit, 10) }
 
-    let(:transaction) { double :transaction }
-
-    before do
-      allow(transaction).to receive(:deposit)
-      allow(transaction).to receive(:withdrawl)
+    it 'returns "Successful Withdrawl" message' do
+      expect(subject.new_transaction(:withdrawl, 5)).to eq 'Withdrawl of $5 was successful'
     end
 
-    it 'returns an empty array if no transactions have happened' do
-      expect(subject.view_transactions).to eq []
+    it 'increases balance by given amount' do
+      expect(subject.new_transaction(:withdrawl, 5))
+      expect(subject.balance).to eq 5
     end
 
-    it 'returns one transaction after a deposit has been made' do
-      subject.make_deposit(10, transaction)
-      expect(subject.view_transactions).to include transaction
+    it 'creates new transaction' do
+      expect(transaction).to receive(:new)
+      subject.new_transaction(:withdrawl, 5, transaction)
     end
 
-    it 'returns two transactions after a deposit and withdrawl has been made' do
-      subject.make_deposit(10, transaction)
-      subject.make_withdrawl(5, transaction)
-      expect(subject.view_transactions).to eq [transaction, transaction]
-    end
   end
 
 end

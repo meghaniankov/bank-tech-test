@@ -1,13 +1,24 @@
 module StatementPrinter
+
+  HEADER = "date || credit || debit || balance"
+
   def self.to_string(transactions)
-    @strings = ["date || credit || debit || balance"]
+    @strings = [HEADER]
     transactions.reverse.map do |transaction|
-      if transaction.type == 'credit'
-        @strings << "#{transaction.date} || #{transaction.amount}.00 || || #{transaction.balance}.00"
-      else
-        @strings << "#{transaction.date} || || #{transaction.amount}.00 || #{transaction.balance}.00"
-      end
+        @strings << "#{transaction.date} ||#{format_type(transaction)}|| #{format_amount(transaction.balance)}"
     end
     puts @strings.join("\n").strip
   end
+
+  private
+
+  def self.format_type(transaction)
+    amount = format_amount(transaction.amount)
+    transaction.type == :deposit ? " #{amount} || " : " || #{amount} "
+  end
+
+  def self.format_amount(amount)
+    '%.2f' % amount
+  end
+  
 end
