@@ -26,7 +26,7 @@ describe Bank do
     end
 
     it 'raises error if withdrawl amount exceeds balance' do
-      expect { subject.make_withdrawl(5) }.to raise_error 'Withdrawl unsuccessful. Withdrawl amount exceeds account balance'
+      expect { subject.make_withdrawl(5) }.to raise_error 'Withdrawl amount exceeds account balance'
     end
   end
 
